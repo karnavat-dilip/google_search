@@ -10,7 +10,7 @@ function Search() {
     setQuery(query);
 
     if (query.length > 0) {
-      const response = await axios.get(`http://localhost:4000/search?q=${query}`);
+      const response = await axios.get(`/search?q=${query}`);
       setResults(response.data.items);
     } else {
       setResults([]);
@@ -21,7 +21,7 @@ function Search() {
     <div>
       <input type="text" value={query} onChange={handleSearch} placeholder="Search..." />
       <ul>
-        {results.map(result => (
+        {results?.map(result => (
           <li key={result.cacheId}>
             <a href={result.link} target="_blank" rel="noopener noreferrer">
               {result.title}
